@@ -1,196 +1,395 @@
+@import url("https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap");
+
+/* Common Style */
 * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
-
-:root {
-  --color: #1e293b;
-  --c1: #fbda61;
-  --c2: #ff5acd;
-  --c3: #2563eb;
-  --gradient: linear-gradient(
-    60deg,
-    var(--c3),
-    var(--c2),
-    var(--c1),
-    var(--c2),
-    var(--c3)
-  );
-  --scale-start: 0.5;
-  --scale-end: 1.001;
-  --hover-offset: 5%;
-
-  /* 
-    linear easing generator
-    https://linear-easing-generator.netlify.app/
-  */
-  /* prettier-ignore */
-  --ease-elastic: linear(
-    0, 0.186 2.1%, 0.778 7.2%, 1.027 9.7%, 1.133, 1.212, 1.264, 1.292 15.4%,
-    1.296, 1.294, 1.285, 1.269 18.9%, 1.219 20.9%, 1.062 25.8%, 0.995 28.3%,
-    0.944 31.1%, 0.93, 0.921, 0.92 35.7%, 0.926, 0.94 39.7%, 1.001 47%, 1.014,
-    1.021 52.4%, 1.02 56.4%, 1 65.5%, 0.994 70.7%, 1.001 88.4%, 1
-  );
-  --ease-bounce-out: cubic-bezier(0.34, 1.56, 0.64, 1);
+img {
+  width: 100%;
+  height: auto;
 }
-
-@media (prefers-reduced-motion) {
-  :root {
-    --scale-start: var(--scale-end);
-    --ease-elastic: ease-out;
-    --ease-bounce-out: ease-out;
-    --hover-offset: 0;
-  }
-}
-
 body {
-  padding-inline: 1rem;
-  font-family: system-ui;
-  font-weight: 800;
-  font-size: calc(1rem + 10vmin);
+  overflow: hidden !important;
+}
+a:focus {
+  outline: none;
+  box-shadow: none;
+}
+input:focus {
+  outline: none;
+  border: none;
+  box-shadow: none;
+}
+input:focus-visible {
+  outline: none;
+  border: none;
+  box-shadow: none;
+}
+button:focus,
+:focus-visible {
+  outline: none;
+  border: none;
+}
+/* Root*/
+:root {
+  --pear-can: #e6ffde;
+  --pear-logo: #03403f;
+  --apple-can: #f2675a;
+  --apple-logo: #ec4458;
+  --exotic-can: #9590f1;
+  --black-color: #000000;
+  --white-color: #ffffff;
+  --exotic-logo: #6464ff;
+  --pear-background: #c9e78a;
+  --apple-background: #ffb2b2;
+  --exotic-background: #c1bff2;
+}
+/* Typography */
+h1 {
+  font-family: "Lexend";
+  font-size: 449px !important;
+  line-height: normal !important;
+  color: var(--white-color) !important;
+  margin: 0 !important;
+}
+h2 {
+  font-family: "Lexend";
+  font-size: 40px;
+  line-height: normal;
+  margin: 0;
+  font-weight: 900;
+}
+/* Header */
+header {
+  padding: 22px 28px 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  z-index: 99;
   text-align: center;
-  overflow-x: hidden;
 }
-
-.intro {
-  display: flex;
-  justify-content: center;
-  gap: 0.2em;
-  font-size: 0.5em;
-  margin-block-start: calc(50vh - 1ex);
+.logo {
+  color: var(--pear-logo);
 }
-
-.intro span {
-  display: inline-block;
+h1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
-
-.intro span:first-child {
-  transform-origin: right bottom;
-  animation: wave 250ms 1s ease 3;
-}
-
-.intro span:last-child {
-  animation: hover 500ms linear infinite;
-}
-
-.box {
-  margin-block: 80vh;
-}
-
-.text {
-  margin-inline: auto;
-  padding-block: 0.2em;
-  max-inline-size: 15ch;
-  text-wrap: balance;
-  background-image: var(--gradient);
-  background-size: 400%;
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-}
-
-@supports (animation-timeline: view()) {
-  .box {
-    animation: trigger steps(1) both, fade linear both;
-    animation-timeline: view();
-    animation-range: entry 80% contain 40%;
-  }
-
-  .text {
-    animation: pop-back 300ms var(--ease-bounce-out) forwards;
-  }
-
-  @container style(--animate: true) {
-    .text {
-      animation: pop 600ms var(--ease-elastic) forwards,
-        text-gradient 1s cubic-bezier(0, 0.55, 0.45, 1) forwards;
-    }
-  }
-}
-
-.smile {
-  width: 1em;
-  margin-inline: auto;
+/* Cane Image and Wrapper Image */
+.cane-image {
+  max-width: 265px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  mask-image: url(https://www.yudiz.com/codepen/fruity/cane.svg);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center center;
+  mask-position: center center;
+  -webkit-mask-size: 100% auto;
+  mask-size: 100% auto;
   overflow: hidden;
-  white-space: nowrap;
-  margin-block-end: calc(50vh - 1ex);
 }
-
-.smile div {
+.cane-image img {
+  width: 100%;
+}
+.cane-labels {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 300% !important;
+  mix-blend-mode: multiply;
+  transition: all ease-in-out 0.3s;
+}
+/*Fruits Images */
+.fruit-image {
+  opacity: 1;
+  position: absolute;
+}
+.image-one {
+  max-width: 282px;
+  bottom: 100px;
+}
+.image-two {
+  max-width: 247px;
+  top: 23%;
+  left: 25%;
+}
+.image-three {
+  max-width: 211px;
+  top: 23%;
+  right: 25%;
+}
+.image-four {
+  max-width: 294px;
+  bottom: 100px;
+  right: 0;
+}
+/* After */
+.fruit-image::after {
+  content: "";
+  position: absolute;
+  background: linear-gradient(90deg, #000 3.66%, rgba(0, 0, 0, 0) 92.35%);
+  opacity: 0.43;
+  filter: blur(7.5px);
+  transform: rotate(-6.941deg);
+  right: 0;
+  width: 173px;
+  height: 30px;
+}
+.image-one::after {
+  bottom: -50px;
+}
+.image-two::after {
+  bottom: -200px;
+  height: 22px;
+}
+.image-three::after {
+  bottom: -280px;
+  width: 103px;
+}
+.image-four::after {
+  bottom: -50px;
+}
+/*Section  */
+.section-container-main {
+  width: 100vw;
+  overflow: hidden;
+  position: relative;
+  z-index: -1;
+}
+.section-container {
+  width: 300vw;
   display: flex;
-  animation: wink 1s steps(1) infinite;
+  position: relative;
+  transition: all ease-in-out 0.5s;
+  align-items: center;
 }
-
-.smile span {
-  display: inline-block;
-  width: 1em;
+.section {
+  min-width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  z-index: -1;
+  background: var(--pear-background);
 }
-
-@keyframes fade {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+.section:nth-child(2) {
+  background-color: var(--apple-background);
 }
-
-@keyframes trigger {
-  to {
-    --animate: true;
-  }
+.section:nth-child(3) {
+  background-color: var(--exotic-background);
 }
-
-@keyframes pop {
-  from {
-    scale: var(--scale-start);
-  }
-  to {
-    scale: var(--scale-end);
-  }
+/* Add this to your CSS */
+/* Buttons */
+button {
+  position: fixed;
+  top: 50%;
+  right: 30px;
+  z-index: 99;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  height: 80px;
+  width: 80px;
+  background-color: var(--white-color);
+  border: none;
+  font-size: 40px;
+  color: var(--apple-logo);
+  transition: all ease-in-out 0.3s;
+  cursor: pointer;
 }
-
-@keyframes text-gradient {
+#prevButton {
+  left: 30px;
+  right: unset;
+  display: none;
+  transition: all ease-in 0.3s;
+}
+.wave {
+  animation: wave-apple-effect 4s linear infinite;
+  animation-direction: normal;
+}
+@keyframes wave-pear-effect {
+  0% {
+    box-shadow: 0 0 0 0px var(--pear-background),
+      0 0 0 0px var(--pear-background);
+  }
+  40% {
+    box-shadow: 0 0 0 50px rgba(60, 41, 188, 0),
+      0 0 0 0px var(--pear-background);
+  }
+  80% {
+    box-shadow: 0 0 0 50px rgba(60, 41, 188, 0), 0 0 0 30px rgba(0, 0, 0, 0);
+  }
   100% {
-    background-position: 150% center;
+    box-shadow: 0 0 0 0px rgba(60, 41, 188, 0), 0 0 0 30px rgba(0, 230, 118, 0);
   }
 }
-
-@keyframes pop-back {
-  from {
-    scale: var(--scale-end);
+@keyframes wave-apple-effect {
+  0% {
+    box-shadow: 0 0 0 0px var(--apple-background),
+      0 0 0 0px var(--apple-background);
   }
-  to {
-    color: var(--color);
-    scale: var(--scale-start);
+  40% {
+    box-shadow: 0 0 0 50px rgba(60, 41, 188, 0),
+      0 0 0 0px var(--apple-background);
   }
-}
-
-@keyframes wink {
-  0%,
+  80% {
+    box-shadow: 0 0 0 50px rgba(60, 41, 188, 0), 0 0 0 30px rgba(0, 0, 0, 0);
+  }
   100% {
-    translate: 0 0;
-  }
-  25%,
-  75% {
-    translate: -100% 0;
-  }
-  50% {
-    translate: -200% 0;
+    box-shadow: 0 0 0 0px rgba(60, 41, 188, 0), 0 0 0 30px rgba(0, 230, 118, 0);
   }
 }
-
-@keyframes wave {
-  50% {
-    rotate: 10deg;
+@keyframes wave-exotic-effect {
+  0% {
+    box-shadow: 0 0 0 0px var(--exotic-background),
+      0 0 0 0px var(--exotic-background);
+  }
+  40% {
+    box-shadow: 0 0 0 50px rgba(60, 41, 188, 0),
+      0 0 0 0px var(--exotic-background);
+  }
+  80% {
+    box-shadow: 0 0 0 50px rgba(60, 41, 188, 0), 0 0 0 30px rgba(0, 0, 0, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0px rgba(60, 41, 188, 0), 0 0 0 30px rgba(0, 230, 118, 0);
   }
 }
-
-@keyframes hover {
-  from,
-  to {
-    translate: 0 calc(var(--hover-offset) * -1);
+/*.......... Responsive.............. */
+@media screen and (max-width: 1550px) {
+  h1 {
+    font-size: 350px !important;
   }
-  50% {
-    translate: 0 var(--hover-offset);
+  .cane-image {
+    max-width: 280px;
+  }
+  .image-one {
+    max-width: 250px;
+  }
+  .image-two {
+    max-width: 215px;
+    left: 22%;
+    top: 10%;
+  }
+  .image-three {
+    max-width: 180px;
+  }
+  .image-four {
+    max-width: 260px;
+    right: 40px;
+  }
+}
+@media screen and (max-width: 1199px) {
+  h1 {
+    font-size: 300px !important;
+  }
+  .cane-image::after {
+    width: 150%;
+  }
+  .image-one {
+    max-width: 220px;
+  }
+  .image-two {
+    max-width: 185px;
+    left: 18%;
+    top: 10%;
+  }
+  .image-three {
+    max-width: 180px;
+    right: 18%;
+  }
+  .image-four {
+    max-width: 230px;
+  }
+}
+@media screen and (max-width: 991px) {
+  h1 {
+    font-size: 240px !important;
+  }
+  .cane-image {
+    max-width: 250px;
+  }
+  button {
+    height: 80px;
+    width: 80px;
+    top: 90%;
+  }
+  .image-one {
+    max-width: 180px;
+  }
+  .image-two {
+    max-width: 165px;
+    left: 12%;
+    top: 12%;
+  }
+  .image-three {
+    max-width: 150px;
+    right: 12%;
+  }
+  .image-four {
+    max-width: 200px;
+  }
+}
+@media screen and (max-width: 767px) {
+  h1 {
+    font-size: 180px !important;
+  }
+  h2 {
+    font-size: 30px;
+  }
+  .cane-image {
+    max-width: 180px;
+  }
+  button {
+    height: 60px;
+    width: 60px;
+    font-size: 20px;
+  }
+  .image-one {
+    max-width: 180px;
+    bottom: 150px;
+  }
+  .image-two {
+    max-width: 145px;
+    left: 12%;
+    top: 15%;
+  }
+  .image-three {
+    max-width: 130px;
+    right: 10%;
+  }
+  .image-four {
+    max-width: 180px;
+    bottom: 150px;
+  }
+}
+@media screen and (max-width: 575px) {
+  h1 {
+    font-size: 100px !important;
+  }
+  .cane-image::after {
+    width: 100%;
+  }
+  .image-one {
+    max-width: 150px;
+  }
+  .image-two {
+    max-width: 115px;
+    left: 4%;
+    top: 18%;
+  }
+  .image-three {
+    max-width: 100px;
+    right: 4%;
+  }
+  .image-four {
+    max-width: 150px;
+    right: 0;
   }
 }
